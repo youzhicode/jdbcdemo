@@ -11,10 +11,12 @@ import com.ymcyun.domain.User;
 import com.ymcyun.utils.AbsDbUtil;
 import com.ymcyun.utils.DbUtilC3P0;
 import com.ymcyun.utils.DbUtils;
+import com.ymcyun.utils.DbutilDruid;
 
 public class UserDao {
 
-    private AbsDbUtil db = new DbUtilC3P0();  // use c3p0
+    private AbsDbUtil db = DbutilDruid.getInstance();
+    // private AbsDbUtil db = DbUtilC3P0.getInstance();  // use c3p0
     // private AbsDbUtil db = DbUtils.getInstance(); // use traditional jdbc
 
     public User findUserById(int id) {
