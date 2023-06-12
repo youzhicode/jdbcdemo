@@ -11,7 +11,7 @@ import javax.sql.DataSource;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 
-public class DbutilDruid extends AbsDbUtil {
+public class DbutilDruid extends AbsDbUtil implements IDataSource {
 
     private DataSource ds;
 
@@ -57,6 +57,11 @@ public class DbutilDruid extends AbsDbUtil {
             }
         }
         return null;
+    }
+
+    @Override
+    public DataSource getDataSource() {
+        return ds;
     }
     
 }

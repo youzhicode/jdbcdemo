@@ -8,7 +8,7 @@ import javax.sql.DataSource;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
-public class DbUtilC3P0  extends AbsDbUtil{
+public class DbUtilC3P0  extends AbsDbUtil implements IDataSource{
 
     private DataSource c3p0;
 
@@ -47,6 +47,12 @@ public class DbUtilC3P0  extends AbsDbUtil{
             }
         }
         return null;
+    }
+
+
+    @Override
+    public DataSource getDataSource() {
+        return c3p0;
     }
     
 

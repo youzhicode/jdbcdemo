@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: com.ymcyun.dao.UserDaoTest
+Test set: com.ymcyun.dao.TeacherDaoTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.246 s - in com.ymcyun.dao.UserDaoTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.38 s - in com.ymcyun.dao.TeacherDaoTest
