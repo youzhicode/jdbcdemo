@@ -7,13 +7,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.cj.x.protobuf.MysqlxConnection.Close;
 import com.ymcyun.domain.User;
+import com.ymcyun.utils.AbsDbUtil;
+import com.ymcyun.utils.DbUtilC3P0;
 import com.ymcyun.utils.DbUtils;
 
 public class UserDao {
 
-    private DbUtils db = DbUtils.getInstance();
+    private AbsDbUtil db = new DbUtilC3P0();  // use c3p0
+    // private AbsDbUtil db = DbUtils.getInstance(); // use traditional jdbc
 
     public User findUserById(int id) {
         User user = null;

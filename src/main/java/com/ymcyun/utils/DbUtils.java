@@ -2,15 +2,13 @@ package com.ymcyun.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
-import java.sql.ResultSet;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class DbUtils {
+public class DbUtils extends AbsDbUtil{
 
 	private String user;
 	private String password;
@@ -68,44 +66,5 @@ public class DbUtils {
 			e.printStackTrace();
 		}
 		return null;
-	}
-
-
-	public void close(Object... objs) {
-		for (Object obj : objs) {
-			if (obj instanceof Connection) {
-				try {
-					((Connection)obj).close();
-					continue;
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if (obj instanceof Statement) {
-				try {
-					((Statement)obj).close();
-					continue;
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if (obj instanceof PreparedStatement) {
-				try {
-					((PreparedStatement)obj).close();
-					continue;
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if (obj instanceof ResultSet) {
-				try {
-					((ResultSet)obj).close();
-					continue;
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		
 	}
 }
