@@ -1,6 +1,7 @@
 package com.ymcyun.dao;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
@@ -31,6 +32,15 @@ public class UserDaoTest {
         UserDao userDao = new UserDao();
         User user = userDao.findUserByUsernameAndPassword("weiki", "123456");
         assertEquals(user.getId(), 1);
+    }
+
+    @Test
+    public void testSingupUser() {
+        UserDao userDao = new UserDao();
+        User user = new User("hello", "world");
+        user.setAge(20);
+
+        assertTrue(userDao.singUpUser(user), "success");
     }
 
 }

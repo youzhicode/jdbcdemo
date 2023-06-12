@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.cj.x.protobuf.MysqlxConnection.Close;
 import com.ymcyun.domain.User;
 import com.ymcyun.utils.DbUtils;
 
@@ -94,6 +95,37 @@ public class UserDao {
             db.close(rs, pstmt, conn);
         }
         return user;
+    }
+
+    public boolean singUpUser(User user) {
+        String sql = "INSERT INTO users(username, password, age) values(?,?,?)";
+        Connection conn = db.getConnection();
+        PreparedStatement pstmt = null;
+        boolean success = false;
+        try {
+            conn.setAutoCommit(false);
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, user.getUsername());
+            pstmt.setString(2, user.getPassword());
+            pstmt.setInt(3, user.getAge());
+            int rs = pstmt.executeUpdate();
+            if (rs > 0) {
+                success = true;
+                conn.commit();
+            } else {
+                conn.rollback();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        } finally {
+            db.close(pstmt, conn);
+        }
+        return success;
     }
 
 }
